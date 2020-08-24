@@ -48,7 +48,9 @@ class Step4Fragment : Fragment() {
         binding.apply {
             viewModel = this@Step4Fragment.viewModel
             lifecycleOwner = viewLifecycleOwner
-
+            viewModel.data.observe(viewLifecycleOwner) {
+                Log.e("NJW", "value of data changed to $it")
+            }
         }
     }
 
