@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.viewpager2testwithlivedata.MyService
 import com.example.viewpager2testwithlivedata.R
+import com.example.viewpager2testwithlivedata.Step4ViewModel
+import com.example.viewpager2testwithlivedata.databinding.Step1FragmentBinding
 
 class Step1Fragment : Fragment() {
 
@@ -16,25 +18,36 @@ class Step1Fragment : Fragment() {
         fun newInstance() = Step1Fragment()
     }
 
+    lateinit var binding: Step1FragmentBinding
     private lateinit var viewModel: Step1ViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.step1_fragment, container, false)
+        this@Step1Fragment.viewModel = ViewModelProvider(this).get(Step1ViewModel::class.java)
+
+        binding = Step1FragmentBinding
+            .inflate(inflater, container, false)
+            .apply {
+                lifecycleOwner = viewLifecycleOwner
+                viewModel = this@Step1Fragment.viewModel
+
+            }
+        return binding.root
     }
+// add koin in.
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(Step1ViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
     override fun onPause() {
         super.onPause()
-        Log.e("NJW", "onPause step1, updating data")
-        MyService.data.value = "onPauserStep1"
+        Log.e("NJW", "onPause step1..")
     }
 
 }

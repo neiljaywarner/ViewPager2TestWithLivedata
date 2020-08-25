@@ -27,13 +27,7 @@ class Step4Fragment : Fragment() {
                 .inflate(inflater, container, false)
                 .apply {
 
-                    /*
-                    viewModel?.submitModel?.observe(viewLifecycleOwner) {
-                        viewModel?.confirmationModel?.value = it
-                    }
 
-
-                     */
                 }
         Log.e("NJW", "onCreateView-step4fragment")
 
@@ -48,7 +42,7 @@ class Step4Fragment : Fragment() {
         binding.apply {
             viewModel = this@Step4Fragment.viewModel
             lifecycleOwner = viewLifecycleOwner
-            viewModel.data.observe(viewLifecycleOwner) {
+            viewModel?.data?.observe(viewLifecycleOwner) {
                 Log.e("NJW", "value of data changed to $it")
             }
         }
