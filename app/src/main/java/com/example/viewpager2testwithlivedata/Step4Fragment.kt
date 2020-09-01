@@ -1,4 +1,4 @@
-package com.example.viewpager2testwithlivedata
+import com.example.viewpager2testwithlivedata.Step4ViewModel
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.viewpager2testwithlivedata.databinding.Step4FragmentBinding
 import com.example.viewpager2testwithlivedata.ui.main.Step3ViewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class Step4Fragment : Fragment() {
 
@@ -16,7 +17,7 @@ class Step4Fragment : Fragment() {
         fun newInstance() = Step4Fragment()
     }
 
-    private lateinit var viewModel: Step4ViewModel
+    val viewModel: Step4ViewModel by viewModel()
 
     private lateinit var binding: Step4FragmentBinding
 
@@ -37,7 +38,6 @@ class Step4Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.e("NJW", "onViewCreated-step4fragment")
-        this@Step4Fragment.viewModel = ViewModelProvider(this).get(Step4ViewModel::class.java)
 
         binding.apply {
             viewModel = this@Step4Fragment.viewModel
@@ -48,10 +48,6 @@ class Step4Fragment : Fragment() {
         }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        Log.e("NJW", "-onActivityCreated-step4fragment")
-        // TODO: Use the ViewModel
-    }
+
 
 }

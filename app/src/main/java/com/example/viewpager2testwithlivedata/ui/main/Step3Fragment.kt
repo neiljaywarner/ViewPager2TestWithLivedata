@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.viewpager2testwithlivedata.R
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class Step3Fragment : Fragment() {
 
@@ -14,19 +15,13 @@ class Step3Fragment : Fragment() {
         fun newInstance() = Step3Fragment()
     }
 
-    private lateinit var viewModel: Step3ViewModel
+    val viewModel: Step3ViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.step3_fragment, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(Step3ViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }

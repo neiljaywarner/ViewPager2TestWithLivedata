@@ -10,6 +10,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.viewpager2testwithlivedata.R
 import com.example.viewpager2testwithlivedata.ui.main.SectionsPagerAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class WizardParentFragment : Fragment() {
 
@@ -17,7 +18,7 @@ class WizardParentFragment : Fragment() {
         fun newInstance() = WizardParentFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    val viewModel: MainViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,10 +38,5 @@ class WizardParentFragment : Fragment() {
         return view
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }

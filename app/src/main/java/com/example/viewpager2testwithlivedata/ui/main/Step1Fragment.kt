@@ -1,16 +1,13 @@
 package com.example.viewpager2testwithlivedata.ui.main
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.viewpager2testwithlivedata.MyService
-import com.example.viewpager2testwithlivedata.R
-import com.example.viewpager2testwithlivedata.Step4ViewModel
 import com.example.viewpager2testwithlivedata.databinding.Step1FragmentBinding
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class Step1Fragment : Fragment() {
 
@@ -19,14 +16,13 @@ class Step1Fragment : Fragment() {
     }
 
     lateinit var binding: Step1FragmentBinding
-    private lateinit var viewModel: Step1ViewModel
+    val viewModel: Step1ViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        this@Step1Fragment.viewModel = ViewModelProvider(this).get(Step1ViewModel::class.java)
 
         binding = Step1FragmentBinding
             .inflate(inflater, container, false)
